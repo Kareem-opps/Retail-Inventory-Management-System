@@ -58,6 +58,13 @@ class Product(db.Model):
     price = db.Column(db.Float, nullable=False, default=0.0)
     supplier = db.Column(db.String(100), nullable=False)
     
+    # Minimum stock quantity before the product is considered low stock.
+    reorder_level = db.Column(
+    db.Integer,
+    nullable=False,
+    default=5
+    )
+    
     # Timestamp for when the product was added
     date_added = db.Column(db.DateTime, default=datetime.utcnow)
     

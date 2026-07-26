@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Add Product | Retail Inventory System{% endblock %}
+
+{% block content %}
+<section aria-labelledby="add-product-heading">
+    <div class="page-header">
+        <div>
+            <p class="page-eyebrow">Product management</p>
+            <h1 id="add-product-heading">Add Product</h1>
+            <p class="page-description">
+                Record a product and its current stock information.
+            </p>
+        </div>
+    </div>
+
+    {% set submit_label = "Save Product" %}
+    {% set cancel_url = url_for("products") %}
+    {% include "products/_form.html" %}
+</section>
+{% endblock %}

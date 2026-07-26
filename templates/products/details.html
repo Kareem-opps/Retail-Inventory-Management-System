@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}{{ product.name }} | Retail Inventory System{% endblock %}
+
+{% block content %}
+<section aria-labelledby="product-details-heading">
+    <div class="page-header">
+        <div>
+            <p class="page-eyebrow">Product details</p>
+            <h1 id="product-details-heading">{{ product.name }}</h1>
+            <p class="page-description">
+                Review the stored product and inventory information.
+            </p>
+        </div>
+        <span class="badge product-detail-status {{ stock_status.badge_class }}">
+            {{ stock_status.label }}
+        </span>
+    </div>
+
+    <div class="card content-card product-details-card">
+        <div class="card-body">
+            <dl class="row product-detail-list">
+                <dt class="col-sm-4 col-lg-3">Product ID</dt>
+                <dd class="col-sm-8 col-lg-9">#{{ product.id }}</dd>
+
+                <dt class="col-sm-4 col-lg-3">Name</dt>
+                <dd class="col-sm-8 col-lg-9">{{ product.name }}</dd>
+
+                <dt class="col-sm-4 col-lg-3">Category</dt>
+                <dd class="col-sm-8 col-lg-9">{{ product.category }}</dd>
+
+                <dt class="col-sm-4 col-lg-3">Supplier</dt>
+                <dd class="col-sm-8 col-lg-9">{{ product.supplier }}</dd>
+
+                <dt class="col-sm-4 col-lg-3">Price</dt>
+                <dd class="col-sm-8 col-lg-9">EGP {{ "{:,.2f}".format(product.price) }}</dd>
+
+                <dt class="col-sm-4 col-lg-3">Quantity</dt>
+                <dd class="col-sm-8 col-lg-9">{{ product.quantity }}</dd>
+
+                <dt class="col-sm-4 col-lg-3">Reorder Level</dt>
+                <dd class="col-sm-8 col-lg-9">{{ product.reorder_level }}</dd>
+
+                <dt class="col-sm-4 col-lg-3">Stock Status</dt>
+                <dd class="col-sm-8 col-lg-9">
+                    <span class="badge {{ stock_status.badge_class }}">{{ stock_status.label }}</span>
+                </dd>
+
+                <dt class="col-sm-4 col-lg-3">Date Added</dt>
+                <dd class="col-sm-8 col-lg-9">
+                    {{ product.date_added.strftime("%d %b %Y, %H:%M") if product.date_added else "Not available" }}
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="detail-actions">
+        <a class="btn btn-outline-secondary" href="{{ url_for('products') }}">
+            <i class="bi bi-arrow-left" aria-hidden="true"></i>
+            Back
+        </a>
+        <a class="btn btn-primary" href="{{ url_for('edit_product', product_id=product.id) }}">
+            <i class="bi bi-pencil" aria-hidden="true"></i>
+            Edit
+        </a>
+        <button
+            class="btn btn-outline-danger"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#deleteProductModal"
+            data-product-name="{{ product.name }}"
+            data-delete-url="{{ url_for('delete_product', product_id=product.id) }}"
+        >
+            <i class="bi bi-trash" aria-hidden="true"></i>
+            Delete
+        </button>
+    </div>
+</section>
+
+{% include "products/_delete_modal.html" %}
+{% endblock %}

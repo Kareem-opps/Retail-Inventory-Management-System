@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Dashboard | Retail Inventory System
+{% endblock %}
+
+
+{% block content %}
+    <section aria-labelledby="dashboard-heading">
+        <div class="page-header">
+            <div>
+                <p class="page-eyebrow">Overview</p>
+                <h1 id="dashboard-heading">Dashboard</h1>
+                <p class="page-description">
+                    Monitor the current state of products, inventory, and orders at a glance.
+                </p>
+            </div>
+        </div>
+
+        <div class="row g-4" aria-label="Inventory key performance indicators">
+            <div class="col-12 col-sm-6 col-xl-3">
+                <article class="card kpi-card h-100">
+                    <div class="card-body">
+                        <div class="kpi-card-header">
+                            <div class="kpi-icon" aria-hidden="true">
+                                <i class="bi bi-box-seam"></i>
+                            </div>
+                            <span class="kpi-label">Total Products</span>
+                        </div>
+                        <p class="kpi-value">{{ total_products }}</p>
+                        <p class="kpi-note">Products currently recorded</p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-12 col-sm-6 col-xl-3">
+                <article class="card kpi-card h-100">
+                    <div class="card-body">
+                        <div class="kpi-card-header">
+                            <div class="kpi-icon" aria-hidden="true">
+                                <i class="bi bi-cash-stack"></i>
+                            </div>
+                            <span class="kpi-label">Inventory Value</span>
+                        </div>
+                        <p class="kpi-value kpi-value-currency">
+                            <span class="currency-label">EGP</span>
+                            {{ "{:,.2f}".format(inventory_value) }}
+                        </p>
+                        <p class="kpi-note">Current value of stock on hand</p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-12 col-sm-6 col-xl-3">
+                <article class="card kpi-card kpi-card-warning h-100">
+                    <div class="card-body">
+                        <div class="kpi-card-header">
+                            <div class="kpi-icon kpi-icon-warning" aria-hidden="true">
+                                <i class="bi bi-exclamation-triangle"></i>
+                            </div>
+                            <span class="kpi-label">Low Stock Products</span>
+                        </div>
+                        <p class="kpi-value">{{ low_stock_products }}</p>
+                        <p class="kpi-note">Products at or below reorder level</p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col-12 col-sm-6 col-xl-3">
+                <article class="card kpi-card h-100">
+                    <div class="card-body">
+                        <div class="kpi-card-header">
+                            <div class="kpi-icon" aria-hidden="true">
+                                <i class="bi bi-receipt"></i>
+                            </div>
+                            <span class="kpi-label">Total Orders</span>
+                        </div>
+                        <p class="kpi-value">{{ total_orders }}</p>
+                        <p class="kpi-note">Orders currently recorded</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+{% endblock %}

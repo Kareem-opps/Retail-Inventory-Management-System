@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Edit {{ product.name }} | Retail Inventory System{% endblock %}
+
+{% block content %}
+<section aria-labelledby="edit-product-heading">
+    <div class="page-header">
+        <div>
+            <p class="page-eyebrow">Product management</p>
+            <h1 id="edit-product-heading">Edit Product</h1>
+            <p class="page-description">
+                Update the details and stock information for {{ product.name }}.
+            </p>
+        </div>
+    </div>
+
+    {% set submit_label = "Save Changes" %}
+    {% set cancel_url = url_for("product_details", product_id=product.id) %}
+    {% include "products/_form.html" %}
+</section>
+{% endblock %}
