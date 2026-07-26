@@ -13,7 +13,7 @@ class Config:
     
     # POSTGRESQL CONNECTION (use this if you have PostgreSQL)
     # Format: postgresql://username:password@host:port/database_name
-    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:2942003@localhost:5432/inventory_db'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:YourPassword@localhost:5432/inventory_db'
     
     # Disable tracking modifications to save memory
     SQLALCHEMY_TRACK_MODIFICATIONS = False
