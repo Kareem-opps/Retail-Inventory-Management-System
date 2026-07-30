@@ -1,6 +1,6 @@
 # 🛒 Retail Inventory Management System
 
-A Flask-based retail inventory management system built with PostgreSQL, SQLAlchemy, HTML, CSS, JavaScript, Git, GitHub, and Docker.
+A Flask-based retail inventory management system built with PostgreSQL, SQLAlchemy, HTML, CSS, and JavaScript.
 
 The project is being developed in structured groups. Group 1 and Group 2 are now complete and include the dashboard and full product management workflow.
 
@@ -63,9 +63,7 @@ The project is being developed in structured groups. Group 1 and Group 2 are now
 - HTML5
 - CSS3
 - JavaScript
-- Git
-- GitHub
-- Docker
+- Git and GitHub
 
 ---
 
